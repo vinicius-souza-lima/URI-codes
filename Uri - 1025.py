@@ -1,10 +1,14 @@
-/*
-Todos os seus amigos estão loucos pelo filme "Interstellar". Agora eles estão postando textos no Facebook em Código Morse. Você precisa escrever um código para decodificar Morse!
+"""
+Todos os seus amigos estão loucos pelo filme "Interstellar". Agora eles estão postando textos no Facebook em Código Morse. 
+Você precisa escrever um código para decodificar Morse!
 
 Este Código Morse contém somente letras minúsculas (a-z) e espaços em branco.
 
-Nota - Código Morse é uma forma de codificar caracteres em uma sequências de pontos e traços. Cada caracter tem uma codificação fixa. Um exemplo bem famoso é o Morse de SOS "...---..." . S é codificado como "..." (ponto ponto ponto) e O é codificado como "---" (traço traço traço).
-Neste problema, um ponto é denotado por "=" e um traço por "===". Símbolos são separados por "." , letras são separadas por "..." e palavras são separadas por "......." .
+Nota - Código Morse é uma forma de codificar caracteres em uma sequências de pontos e traços. 
+Cada caracter tem uma codificação fixa. Um exemplo bem famoso é o Morse de SOS "...---..." . S é codificado como "..." 
+(ponto ponto ponto) e O é codificado como "---" (traço traço traço).
+Neste problema, um ponto é denotado por "=" e um traço por "===". Símbolos são separados por "." , letras são separadas por "..." 
+e palavras são separadas por "......." .
 Sendo assim, SOS é codificado como =.=.=...===.===.===...=.=.=
 Codificações para todos os caracteres podem ser encontradas no link abaixo.
 
@@ -20,8 +24,8 @@ As próximas t linhas contém os Códigos Morse. O tamanho de cada código é me
 
 Saída
 A saída é divida em linhas, que representam a mensagem decodificada de cada caso de teste.
-*/
-
+"""
+# Unecessaray, could use range(0,tam,2) instead.
 def gerador(vetor):
     tam = len(vetor)
     j = 0
@@ -44,9 +48,11 @@ J	.---	W	.--
 K	-.-	X	-..-
 L	.-..	Y	-.--
 M	--	Z	--.."""
+# The site was unavailable,so I just copied the table from Wikipedia.
 string = string.lower()
 string = string.split()
 dicio = {}
+# Make a dictionary morse ---> alphabet
 for index in gerador(string):
     cod = list(string[index])
     for i in range(len(cod)):
@@ -56,7 +62,9 @@ for index in gerador(string):
             cod[i] = '==='
     string[index] = ".".join(cod)
     dicio[string[index]] = string[index - 1]
+    
 qtd = int(input())
+# Uses the dictionary for translate 
 for i in range(qtd):
     entrada = input().split(".......")
     maxi = len(entrada)
