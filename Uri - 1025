@@ -1,0 +1,51 @@
+
+
+def gerador(vetor):
+    tam = len(vetor)
+    j = 0
+    while j < tam:
+        if j % 2 == 1:
+            yield j
+        j += 1
+
+
+string = """A	.-	N	-.
+B	-...	O	---
+C	-.-.	P	.--.
+D	-..	Q	--.-
+E	.	R	.-.
+F	..-.	S	...
+G	--.	T	-
+H	....	U	..-
+I	..	V	...-
+J	.---	W	.--
+K	-.-	X	-..-
+L	.-..	Y	-.--
+M	--	Z	--.."""
+string = string.lower()
+string = string.split()
+dicio = {}
+for index in gerador(string):
+    cod = list(string[index])
+    for i in range(len(cod)):
+        if cod[i] == '.':
+            cod[i] = '='
+        else:
+            cod[i] = '==='
+    string[index] = ".".join(cod)
+    dicio[string[index]] = string[index - 1]
+qtd = int(input())
+for i in range(qtd):
+    entrada = input().split(".......")
+    maxi = len(entrada)
+    cont = 0
+    for palavra in entrada:
+        cont += 1
+        letras = palavra.split("...")
+        for letra in letras:
+            if letra in dicio:
+                print(dicio[letra], end='')
+        if cont < maxi:
+            print(" ", end='')
+    if i < qtd:
+        print("\n", end="")
